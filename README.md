@@ -13,18 +13,14 @@ In your solution, it is essential that you follow best practices and produce cle
 
 In this project, you will complete the HTML and CSS for a basic static web page for Sweet Eats Bakery. All of the text values have been provided in the HTML; you must create the structure of the page using semantic tags. Remember that semantic markup provides meaning.  Here are a few tags you could consider using:
 
-<!--
-
-<h1> through <h6> 
-<p>
-<header>
-<footer>
-<nav>
-<a>
-<section>
-<address>
-
--->
+h1 through h6
+p
+header
+footer
+nav
+a
+section
+address
 
 Once you've completed the basic structure with HTML, you'll need to add some more style! Much of the stylesheet has already been completed, but there are comments where you'll need to fill in the blanks. Use MDN and other resources to look up specific style properties and selectors.
 
