@@ -31,8 +31,9 @@ Once you've completed the basic structure with HTML, you'll need to add some mor
 4. DO NOT CREATE A BRANCH. You will be pushing your changes to the main/master today.
 5. cd into your repository on the command line and use `code .` to open VS Code.
 6. Open the terminal in VSC and type `npm install`. While this runs, click the split terminal icon.
-7. Next type `npm run test` in one side, and `npm run start` in the other side.
-8. Complete your work making regular commits to the main branch; your CodeGrade score will update each time you make a push.
+7. Next type `npm run test` in one side, and use the other side for git commands or general use.
+8. Download the Live Server extension from the Extensions tab on the left side of your VS Code. After it is done installing, click "Go Live" on the bottom right side of your screen to run your HTML file.
+9. Complete your work making regular commits to the main branch; your CodeGrade score will update each time you make a push.
 
 
 ## Minimum Viable Product

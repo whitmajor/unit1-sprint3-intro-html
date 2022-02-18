@@ -1,38 +1,22 @@
-import { server } from './src/mocks/server'
-import { resetTodos } from './src/mocks/data'
-import { screen, fireEvent, waitForElementToBeRemoved } from '@testing-library/dom'
-import '@testing-library/jest-dom/extend-expect'
-import { todoApp } from './src/components/todos'
+import { fireEvent, getByText, waitFor } from '@testing-library/dom';
+import '@testing-library/jest-dom/extend-expect';
+import { JSDOM } from 'jsdom';
+import fs from 'fs';
+import path from 'path';
+import { fail } from 'assert';
 
-beforeAll(() => { server.listen() })
-afterAll(() => { server.close() })
-beforeEach(() => {
-  resetTodos()
-  todoApp()
-})
-afterEach(() => {
-  server.resetHandlers()
-  document.body.innerHTML = ''
-})
+const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
 
-test('[1] todos are present', async () => {
-  expect(await screen.findByText(/laundry/)).toBeInTheDocument()
-  expect(await screen.findByText(/dishes/)).toBeInTheDocument()
-  expect(await screen.findByText(/groceries/)).toBeInTheDocument()
-}, 750)
+let dom;
+let container;
 
-test('[2] can do laundry', async () => {
-  expect(await screen.findByText('laundry pending')).toBeInTheDocument()
-  fireEvent.click(screen.getAllByText('complete')[0])
-  await waitForElementToBeRemoved(() => screen.queryByText('laundry pending'))
-  expect(await screen.findByText('laundry DONE')).toBeInTheDocument()
-  expect(await screen.findByText('not')).toBeInTheDocument()
-}, 750)
-
-test('[3] can undo laundry', async () => {
-  await screen.findByText('laundry pending')
-  fireEvent.click(screen.getAllByText('complete')[0])
-  const button = await screen.findByText('not')
-  fireEvent.click(button)
-  expect(await screen.findByText('laundry pending')).toBeInTheDocument()
-}, 750)
+describe('index.html', () => {
+    beforeEach(() => {
+        // Constructing a new JSDOM with this option is the key
+        // to getting the code in the script tag to execute.
+        // This is indeed dangerous and should only be done with trusted content.
+        // https://github.com/jsdom/jsdom#executing-scripts
+        dom = new JSDOM(html, { runScripts: 'dangerously' });
+        container = dom.window.document.body;
+    });
+});
