@@ -1,4 +1,7 @@
 /*======= Create a new universal selector that changes the font color to: #3C373B */
+* {
+  color: #3c3738;
+}
 
 h1 {
   font-family: "Gaegu", cursive;
@@ -31,9 +34,13 @@ line-height: 1.4;
 /*======= Create a selector for ALL images in the site to have the following styles: 
 
   border-radius: 10px;
-  */
 
-p {
+  */
+image {
+  border-radius: 10px;
+}
+
+*p {
   font-size: 16px;
   font-family: roboto;
   padding: 10px;
@@ -77,6 +84,7 @@ p {
 */
 .about-section {
   margin-top: 20px;
+  text-align: center;
 }
 
 .contact-section {
@@ -141,5 +149,6 @@ footer nav a:hover {
 
 footer .footer-content .copyright {
   padding: 20px 0;
+  text-align: center;
   /*======= center the text here */
 }
